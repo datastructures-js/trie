@@ -4,12 +4,23 @@
  * @license MIT
  */
 
+/**
+ * @throws {Error}
+ */
+const validate = (str) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${str} is not a string`);
+  }
+};
+
 const node = (ch) => {
   const char = ch;
   let endOfWord = false;
   let parent = null;
   const children = {};
   let childrenCount = 0;
+
+  validate(ch);
 
   /**
    * @return {string}
@@ -101,15 +112,6 @@ const trie = () => {
    * @returns {number}
    */
   const countWords = () => wordsCount;
-
-  /**
-   * @throws {Error}
-   */
-  const validate = (word) => {
-    if (typeof word !== 'string') {
-      throw new Error(`${word} is not a word`);
-    }
-  };
 
   /**
    * finds a word in the trie
@@ -210,6 +212,7 @@ const trie = () => {
 
   // trie api
   return {
+    node,
     countNodes,
     countWords,
     search,
