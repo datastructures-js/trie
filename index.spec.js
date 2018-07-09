@@ -16,7 +16,7 @@ describe('trie tests', () => {
       trie.insert('name');
       trie.insert(''); // should do nothing
       expect(() => trie.insert()).to.throw(Error)
-        .and.to.have.property('message', 'undefined is not a word');
+        .and.to.have.property('message', 'undefined is not a string');
     }));
 
   describe('.countNodes()', () =>
@@ -45,7 +45,7 @@ describe('trie tests', () => {
       expect(trie.search('h')).to.equal(null);
       expect(trie.search('san')).to.equal(null);
       expect(() => trie.search()).to.throw(Error)
-        .and.to.have.property('message', 'undefined is not a word');
+        .and.to.have.property('message', 'undefined is not a string');
     }));
 
   describe('.traverse(cb)', () =>
@@ -114,7 +114,7 @@ describe('trie tests', () => {
       expect(trie.countWords()).to.equal(1);
 
       expect(() => trie.remove()).to.throw(Error)
-        .and.to.have.property('message', 'undefined is not a word');
+        .and.to.have.property('message', 'undefined is not a string');
     }));
 
   describe('.clear()', () =>
