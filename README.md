@@ -42,17 +42,22 @@ console.log(n.countChildren()); // 0
 
 **.insert(word)** 
 
-inserts a word into the trie. By default, the trie has one word, the empty word, that consits of one empty string within a root node.
+inserts a word into the trie.
 
 ```javascript
-trie.insert('hi');
-trie.insert('hit');
-trie.insert('hide');
-trie.insert('hello');
-trie.insert('sand');
-trie.insert('safe');
-trie.insert('noun');
-trie.insert('name');
+try {
+  trie.insert('hi');
+  trie.insert('hit');
+  trie.insert('hide');
+  trie.insert('hello');
+  trie.insert('sand');
+  trie.insert('safe');
+  trie.insert('noun');
+  trie.insert('name');
+  trie.insert(123); // throws an error
+} catch(e) {
+  console.log(e) // 123 is not a word 
+}
 ```
 
 **.search(word)** 
@@ -60,12 +65,15 @@ trie.insert('name');
 finds a word in the trie and returns the last char's node or null if word is not found.
 
 ```javascript
-let n1 = trie.search('hi');
-
-console.log(n1.getChar()); // i
-console.log(n1.getParent().getChar()); // h
-
-console.log(trie.search('abc')); // null
+try {
+  const n1 = trie.search('hi');
+  console.log(n1.getChar()); // i
+  console.log(n1.getParent().getChar()); // h
+  console.log(trie.search('abc')); // null
+  trie.search(); // throws an error
+} catch(e) {
+  console.log(e); // undefined is not a word
+}
 ```
 
 **.traverse(cb)** 
@@ -90,9 +98,13 @@ trie.traverse(console.log);
 removes a word from the trie
 
 ```javascript
-trie.remove('hit');
-
-console.log(trie.search('hit')); // null
+try {
+  trie.remove('hit');
+  console.log(trie.search('hit')); // null
+  trie.remove(null);
+} catch(e) {
+  console.log(e); // null is not a word
+}
 ```
 
 **.countNodes()**
