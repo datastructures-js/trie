@@ -14,6 +14,7 @@ const trieFn = require('@datastructures-js/trie');
 const trie = trieFn();
 
 // by default, the trie has 1 node, the root node.
+```
 
 ## API
 
@@ -32,7 +33,7 @@ creates a trie node that contain a one or more language charachter.
 * **.getChildren()** gets all the children of a node.
 * **.countChildren()** gets the count of node' children.
 
-```javascript
+```js
 const n = trie.node('T');
 console.log(n.getChar()); // T
 console.log(n.isEndOfWord()); // false
@@ -43,7 +44,7 @@ console.log(n.countChildren()); // 0
 
 inserts a word into the trie.
 
-```javascript
+```js
 try {
   trie.insert('hi');
   trie.insert('hit');
@@ -63,7 +64,7 @@ try {
 
 finds a word in the trie and returns the last char's node or null if word is not found.
 
-```javascript
+```js
 try {
   const n1 = trie.search('hi');
   console.log(n1.getChar()); // i
@@ -79,7 +80,7 @@ try {
 
 traverse the trie and calls cb for each word including the empty word
 
-```javascript
+```js
 trie.traverse(console.log);
 // hi
 // hit
@@ -95,7 +96,7 @@ trie.traverse(console.log);
 
 removes a word from the trie
 
-```javascript
+```js
 try {
   trie.remove('hit');
   console.log(trie.search('hit')); // null
@@ -109,7 +110,7 @@ try {
 
 gets the count of characters nodes in the trie
 
-```javascript
+```js
 console.log(trie.countNodes()); // 22
 ```
 
@@ -117,7 +118,7 @@ console.log(trie.countNodes()); // 22
 
 gets the count of the words in the trie
 
-```javascript
+```js
 console.log(trie.countWords()); // 7
 ```
 
@@ -125,7 +126,7 @@ console.log(trie.countWords()); // 7
 
 clears the trie
 
-```javascript
+```js
 trie.clear();
 console.log(trie.countNodes()); // 1 (root default node)
 console.log(trie.countWords()); // 0
