@@ -99,9 +99,8 @@ const node = (ch) => {
 
 const trie = () => {
   let nodesCount = 1;
-  let wordsCount = 1;
+  let wordsCount = 0;
   let rootNode = node('');
-  rootNode.setEndOfWord(true);
 
   /**
    * @returns {number}
@@ -204,10 +203,9 @@ const trie = () => {
    * clears the trie
    */
   const clear = () => {
-    rootNode = node(''); // empty word
-    rootNode.setEndOfWord(true);
     nodesCount = 1;
-    wordsCount = 1;
+    wordsCount = 0;
+    rootNode = node('');
   };
 
   // trie api
