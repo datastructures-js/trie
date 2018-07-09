@@ -13,8 +13,7 @@ node's data type: **string**.
 const trieFn = require('@datastructures-js/trie');
 const trie = trieFn();
 
-// by default, the trie has 1 node, the root, which also forms 1 default word, the empty string.
-```
+// by default, the trie has 1 node, the root node.
 
 ## API
 
@@ -82,7 +81,6 @@ traverse the trie and calls cb for each word including the empty word
 
 ```javascript
 trie.traverse(console.log);
-// 
 // hi
 // hit
 // hide
@@ -120,7 +118,7 @@ console.log(trie.countNodes()); // 22
 gets the count of the words in the trie
 
 ```javascript
-console.log(trie.countWords()); // 8
+console.log(trie.countWords()); // 7
 ```
 
 **.clear()** 
@@ -130,7 +128,7 @@ clears the trie
 ```javascript
 trie.clear();
 console.log(trie.countNodes()); // 1 (root default node)
-console.log(trie.countWords()); // 1 (empty string default word)
+console.log(trie.countWords()); // 0
 ```
 
 ## Build
