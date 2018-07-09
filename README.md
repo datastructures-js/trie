@@ -6,7 +6,7 @@
 
 node's data type: **string**.
 
-<img width="429" alt="ll" src="https://user-images.githubusercontent.com/6517308/42425010-dc9f20ca-82db-11e8-8f78-1efe6959df5f.png">
+<img width="500" alt="ll" src="https://user-images.githubusercontent.com/6517308/42425010-dc9f20ca-82db-11e8-8f78-1efe6959df5f.png">
 
 ## Usage
 ```js
@@ -120,7 +120,7 @@ console.log(trie.countNodes()); // 22
 gets the count of the words in the trie
 
 ```javascript
-console.log(trie.countWords()); // 7
+console.log(trie.countWords()); // 8
 ```
 
 **.clear()** 
