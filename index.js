@@ -13,6 +13,10 @@ const validate = (str) => {
   }
 };
 
+/**
+ * Trie Node
+ * @function
+ */
 const node = (ch) => {
   const char = ch;
   let endOfWord = false;
@@ -97,6 +101,10 @@ const node = (ch) => {
   };
 };
 
+/**
+ * Trie
+ * @function
+ */
 const trie = () => {
   let nodesCount = 1;
   let wordsCount = 0;
@@ -160,7 +168,6 @@ const trie = () => {
    * @param {string} word
    */
   const remove = (word) => {
-    validate(word);
     let currentNode = search(word);
     if (currentNode !== null && currentNode.getChar() !== '') {
       if (currentNode.countChildren() > 0) {
