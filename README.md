@@ -1,6 +1,6 @@
 # @datastrucures-js/trie
 
-[![build:?](https://travis-ci.org/datatructures-js/trie.svg?branch=master)](https://travis-ci.org/eyas-ranjous/datatructures-js/trie) 
+[![build:?](https://travis-ci.org/datatructures-js/trie.svg?branch=master)](https://travis-ci.org/datatructures-js/trie) 
 [![npm](https://img.shields.io/npm/v/@datastructures-js/trie.svg)](https://www.npmjs.com/package/@datastructures-js/trie)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/trie.svg)](https://www.npmjs.com/package/@datastructures-js/trie) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/trie)
 
