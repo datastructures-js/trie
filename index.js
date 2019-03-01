@@ -157,7 +157,7 @@ const trie = () => {
       }
       currentNode = currentNode.getChild(word[i]);
     }
-    if (currentNode.getChar() !== '') {
+    if (currentNode.getChar() !== '' && !currentNode.isEndOfWord()) {
       currentNode.setEndOfWord(true);
       wordsCount += 1;
     }
