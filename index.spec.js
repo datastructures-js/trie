@@ -7,6 +7,9 @@ describe('trie tests', () => {
   describe('.insert(word)', () =>
     it('should insert words into the trie', () => {
       trie.insert('hi');
+      trie.insert('hi');
+      trie.insert('hi');
+      trie.insert('hi');
       trie.insert('hit');
       trie.insert('hide');
       trie.insert('hello');
