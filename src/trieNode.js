@@ -80,7 +80,7 @@ class TrieNode {
    * @return {boolean}
    */
   hasChild(char) {
-    return this.childen.has(char);
+    return this.children.has(char);
   }
 
   /**
@@ -88,6 +88,10 @@ class TrieNode {
    */
   getChildren() {
     return this.children;
+  }
+
+  childrenCount() {
+    return this.children.size;
   }
 }
 
