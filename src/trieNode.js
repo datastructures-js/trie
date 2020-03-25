@@ -16,6 +16,7 @@ class TrieNode {
   }
 
   /**
+   * @public
    * @returns {string}
    */
   getChar() {
@@ -23,6 +24,7 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @param {TrieNode} parentNode
    */
   setParent(parentNode) {
@@ -30,6 +32,7 @@ class TrieNode {
   }
 
   /**
+   * @public
    * @return {TrieNode}
    */
   getParent() {
@@ -37,6 +40,7 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @param {boolean} endOfWord
    */
   setEndOfWord(endOfWord) {
@@ -44,6 +48,7 @@ class TrieNode {
   }
 
   /**
+   * @public
    * @return {boolean}
    */
   isEndOfWord() {
@@ -51,6 +56,7 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @param {string} char
    */
   addChild(char) {
@@ -60,6 +66,7 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @param {string} char
    * @return {boolean}
    */
@@ -68,6 +75,7 @@ class TrieNode {
   }
 
   /**
+   * @public
    * @param {string} char
    * @return {TrieNode}
    */
@@ -76,6 +84,7 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @param {string} char
    * @return {boolean}
    */
@@ -84,12 +93,17 @@ class TrieNode {
   }
 
   /**
+   * @internal
    * @return {Map}
    */
   getChildren() {
     return this.children;
   }
 
+  /**
+   * @public
+   * @return {number}
+   */
   childrenCount() {
     return this.children.size;
   }
