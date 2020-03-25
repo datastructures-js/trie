@@ -4,132 +4,278 @@
 [![npm](https://img.shields.io/npm/v/@datastructures-js/trie.svg)](https://www.npmjs.com/package/@datastructures-js/trie)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/trie.svg)](https://www.npmjs.com/package/@datastructures-js/trie) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/trie)
 
-node's data type: **string**.
+Trie implementation in javascript. Each Trie node holds one character of a word.
 
 <img width="500" alt="Trie" src="https://user-images.githubusercontent.com/6517308/42425010-dc9f20ca-82db-11e8-8f78-1efe6959df5f.png">
 
-## Usage
-```js
-const trieFn = require('@datastructures-js/trie');
-const trie = trieFn();
+# Table of Contents
+* [Install](#install)
+* [API](#api)
+  * [require](#require)
+  * [import](#import)
+  * [Creating a Trie](#create-a-trie)
+  * [.insert(word)](#insertword)
+  * [.has(word)](#hasword)
+  * [.find(word)](#findword)
+  * [.remove(word)](#removeword)
+  * [.forEach(cb)](#foreachcb)
+  * [.toArray()](#toarray)
+  * [.getWordsCount()](#getwordscount)
+  * [.getNodesCount()](#getnodescount)
+  * [.clear()](#clear)
+ * [Build](#build)
+ * [License](#license)
 
-// by default, the trie has 1 node, the root node.
+## Install
+
+```sh
+npm install --save @datastructures-js/trie
 ```
 
 ## API
 
-**.node(char)**
-
-creates a trie node that contain a one or more language charachter.
-
-* **.getChar()** gets the node's charachter.
-* **.setParent(parent)** sets the node's parent.
-* **.getParent()** gets the node's parent.
-* **.setEndOfWord(isEndOfWord)** sets the node as the end char of a word.
-* **.isEndOfWord()** checks if a node's char is the end of a word.
-* **.addChild(child)** adds a child node to the node.
-* **.removeChild(child)** removes a child of the node.
-* **.getChild(char)** gets a node's child by its character.
-* **.getChildren()** gets all the children of a node.
-* **.countChildren()** gets the count of node' children.
+### require
 
 ```js
-const n = trie.node('T');
-console.log(n.getChar()); // T
-console.log(n.isEndOfWord()); // false
-console.log(n.countChildren()); // 0
+const Trie = require('@datastructures-js/trie');
 ```
 
-**.insert(word)** 
-
-inserts a word into the trie.
+### import
 
 ```js
-try {
-  trie.insert('hi');
-  trie.insert('hit');
-  trie.insert('hide');
-  trie.insert('hello');
-  trie.insert('sand');
-  trie.insert('safe');
-  trie.insert('noun');
-  trie.insert('name');
-  trie.insert(123); // throws an error
-} catch(e) {
-  console.log(e) // 123 is not a word 
-}
+import Trie from '@datastructures-js/trie';
 ```
 
-**.search(word)** 
-
-finds a word in the trie and returns the last char's node or null if word is not found.
+### Create a Trie
 
 ```js
-try {
-  const n1 = trie.search('hi');
-  console.log(n1.getChar()); // i
-  console.log(n1.getParent().getChar()); // h
-  console.log(trie.search('abc')); // null
-  trie.search(); // throws an error
-} catch(e) {
-  console.log(e); // undefined is not a word
-}
+// example
+const englishLang = new Trie();
 ```
 
-**.traverse(cb)** 
+### .insert(word)
+insert a string word into the trie.
 
-traverse the trie and calls cb for each word including the empty word
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td><b>{TrieNode}</b>
+   <br /><br/>
+    <b>.getChar()</b>: {string} returns the node's char.<br/>
+    <b>.getParent()</b>: {TrieNode} returns the parent node.<br/>
+    <b>.isEndOfWord()</b> {boolean} check if a node donates an end of a word.<br/>
+    <b>.getChild(char)</b>: {TrieNode} returns the child node of a char<br/>
+    <b>.hasChild(char)</b>: {boolean} check the node has a child char.<br/>
+    <b>.childrenCount()</b>: {number} returns the number of children nodes.<br/>
+  </td>
+ </tr>
+</table>
 
 ```js
-trie.traverse(console.log);
-// hi
-// hit
-// hide
-// hello
-// sand
-// safe
-// noun
-// name
+englishLang.insert('hi');
+englishLang.insert('hit');
+englishLang.insert('hide');
+englishLang.insert('hello');
+englishLang.insert('sand');
+englishLang.insert('safe');
+englishLang.insert('noun');
+englishLang.insert('name');
 ```
 
-**.remove(word)** 
+### .has(word)
+checks if a word exists in the trie.
 
-removes a word from the trie
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{boolean}
+  </td>
+ </tr>
+</table>
 
 ```js
-try {
-  trie.remove('hit');
-  console.log(trie.search('hit')); // null
-  trie.remove(null);
-} catch(e) {
-  console.log(e); // null is not a word
-}
+englishLang.has('hi'); // true
+englishLang.has('sky'); // false
 ```
 
-**.countNodes()**
+### .find(word)
+finds a word in the trie and returns the node of its last character.
 
-gets the count of characters nodes in the trie
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{TrieNode}
+  </td>
+ </tr>
+</table>
 
 ```js
-console.log(trie.countNodes()); // 22
+const hi = englishLang.find('hi');
+// hi.getChar() = 'i'
+// hi.getParent().getChar() = 'h'
+
+const safe = englishLang.find('safe');
+// safe.getChar() = 'e'
+// safe.getParent().getChar() = 'f'
+// safe.getParent().getParent().getChar() = 'a'
 ```
 
-**.countWords()** 
+### .remove(word)
+removes a word from the trie.
 
-gets the count of the words in the trie
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{boolean}
+  </td>
+ </tr>
+</table>
 
 ```js
-console.log(trie.countWords()); // 7
+englishLang.remove('hi'); // true - hi removed
+englishLang.remove('sky'); // false - nothing is removed
 ```
 
-**.clear()** 
+### .forEach(cb)
+traverses all words in the trie.
 
-clears the trie
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(n) : n is the number of nodes in the trie</td>
+  <td>
+   cb: {function(word)}
+  </td>
+ </tr>
+</table>
 
 ```js
-trie.clear();
-console.log(trie.countNodes()); // 1 (root default node)
-console.log(trie.countWords()); // 0
+englishLang.forEach((word) => console.log(word));
+
+/*
+hit
+hide
+hello
+sand
+safe
+noun
+name
+*/
+```
+
+### .toArray()
+converts the trie into an array of words.
+
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(n) : n is the number of nodes in the trie</td>
+  <td>
+   {array}
+  </td>
+ </tr>
+</table>
+
+```js
+console.log(englishLang.toArray());
+
+// ['hit', 'hide', 'hello', 'sand', 'safe', 'noun', 'name']
+```
+
+### .getWordsCount()
+gets the count of words in the trie.
+
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number}
+  </td>
+ </tr>
+</table>
+
+```js
+console.log(englishLang.getWordsCount()); // 7
+```
+
+### .getNodesCount()
+gets the count of nodes in the trie.
+
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number}
+  </td>
+ </tr>
+</table>
+
+```js
+console.log(englishLang.getNodesCount()); // 23
+```
+
+### .clear()
+clears the trie.
+
+<table>
+ <tr>
+  <th>runtime</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+ </tr>
+</table>
+
+```js
+englishLang.clear();
+console.log(englishLang.getWordsCount()); // 0
+console.log(englishLang.getNodesCount()); // 1
 ```
 
 ## Build
