@@ -16,14 +16,6 @@ class Trie {
     this.nodesCount = 1; // root node
   }
 
-  getNodesCount() {
-    return this.nodesCount;
-  }
-
-  getWordsCount() {
-    return this.wordsCount;
-  }
-
   /**
    * @public
    * inserts a word into the trie and returns its last char node
@@ -152,6 +144,22 @@ class Trie {
     const result = [];
     this.forEach((word) => result.push(word));
     return result;
+  }
+
+  /**
+   * @public
+   * @return {number}
+   */
+  getNodesCount() {
+    return this.nodesCount;
+  }
+
+  /**
+   * @public
+   * @return {number}
+   */
+  getWordsCount() {
+    return this.wordsCount;
   }
 
   /**
