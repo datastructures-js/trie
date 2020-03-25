@@ -7,7 +7,7 @@
 const TrieNode = require('./trieNode');
 
 /**
- * @class TrieNode
+ * @class Trie
  */
 class Trie {
   constructor() {
@@ -25,7 +25,7 @@ class Trie {
    */
   insert(word, node = this.root, i = 0) {
     if (typeof word !== 'string') {
-      throw new Error('Trie.insert expect a string word');
+      throw new Error('Trie.insert expects a string word');
     }
 
     if (i === word.length) {
