@@ -27,7 +27,7 @@ describe('Trie unit tests', () => {
       expect(() => trie.insert()).to.throw(Error)
         .and.to.have.property(
           'message',
-          'Trie.insert expect a string word'
+          'Trie.insert expects a string word'
         );
     });
   });
