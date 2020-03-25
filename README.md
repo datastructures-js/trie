@@ -140,8 +140,8 @@ const hi = englishLang.find('hi');
 
 const safe = englishLang.find('safe');
 // safe.getChar() = 'e'
-// safe..getParent().getChar() = 'f'
-// safe..getParent().getParent().getChar() = 'a'
+// safe.getParent().getChar() = 'f'
+// safe.getParent().getParent().getChar() = 'a'
 ```
 
 ### .remove(word)
@@ -257,7 +257,7 @@ gets the count of nodes in the trie.
 </table>
 
 ```js
-console.log(englishLang.getWordsCount()); // 22
+console.log(englishLang.getNodesCount()); // 23
 ```
 
 ### .clear()
