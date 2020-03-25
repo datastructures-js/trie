@@ -67,20 +67,14 @@ insert a string word into the trie.
   <td>
    word: {string}
   </td>
-  <td>{TrieNode}
-   <br><br>
-
-    <b>.getChar()</b>: {string} returns the node's char.
-
-    <b>.getParent()</b>: {TrieNode} returns the parent node.
-
-    <b>.isEndOfWord()</b>: {boolean} check if a node donates an end of a word.
-
-    <b>.getChild(char)</b>: {TrieNode} returns the child node of a char
-
-    <b>.hasChild(char)</b>: {boolean} check the node has a child char.
-
-    <b>.childrenCount()</b>: {number} returns the number of children nodes.
+  <td><b><center>TrieNode</center></b>
+   <br />
+    <b>.getChar()</b>: {string} returns the node's char.<br/>
+    <b>.getParent()</b>: {TrieNode} returns the parent node.<br/>
+    <b>.isEndOfWord()</b> {boolean} check if a node donates an end of a word.<br/>
+    <b>.getChild(char)</b>: {TrieNode} returns the child node of a char<br/>
+    <b>.hasChild(char)</b>: {boolean} check the node has a child char.<br/>
+    <b>.childrenCount()</b>: {number} returns the number of children nodes.<br/>
   </td>
  </tr>
 </table>
