@@ -56,6 +56,35 @@ const englishLang = new Trie();
 ### .insert(word)
 insert a string word into the trie.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{TrieNode}
+   <br><br>
+
+    <b>.getChar()</b>: {string} returns the node's char.
+
+    <b>.getParent()</b>: {TrieNode} returns the parent node.
+
+    <b>.isEndOfWord()</b>: {boolean} check if a node donates an end of a word.
+
+    <b>.getChild(char)</b>: {TrieNode} returns the child node of a char
+
+    <b>.hasChild(char)</b>: {boolean} check the node has a child char.
+
+    <b>.childrenCount()</b>: {number} returns the number of children nodes.
+  </td>
+ </tr>
+</table>
+
 ```js
 englishLang.insert('hi');
 englishLang.insert('hit');
@@ -70,6 +99,22 @@ englishLang.insert('name');
 ### .has(word)
 checks if a word exists in the trie.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{boolean}
+  </td>
+ </tr>
+</table>
+
 ```js
 englishLang.has('hi'); // true
 englishLang.insert('sky'); // false
@@ -78,21 +123,72 @@ englishLang.insert('sky'); // false
 ### .find(word)
 finds a word in the trie and returns the node of its last character.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{TrieNode}
+  </td>
+ </tr>
+</table>
+
 ```js
-const hi = englishLang.find('hi'); // hi.getChar() = 'i'
-const safe = englishLang.find('safe'); // safe.getChar() = 'e'
+const hi = englishLang.find('hi');
+// hi.getChar() = 'i'
+// hi.getParent().getChar() = 'h'
+
+const safe = englishLang.find('safe');
+// safe.getChar() = 'e'
+// safe..getParent().getChar() = 'f'
+// safe..getParent().getParent().getChar() = 'a'
 ```
 
 ### .remove(word)
 removes a word from the trie.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(k) : k is the length of word</td>
+  <td>
+   word: {string}
+  </td>
+  <td>{boolean}
+  </td>
+ </tr>
+</table>
+
 ```js
 englishLang.remove('hi'); // true - hi removed
-englishLang.remove('skye'); // false - nothing is removed
+englishLang.remove('sky'); // false - nothing is removed
 ```
 
 ### .forEach(cb)
 traverses all words in the trie.
+
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(n) : n is the number of nodes in the trie</td>
+  <td>
+   cb: {function(word)}
+  </td>
+ </tr>
+</table>
 
 ```js
 englishLang.forEach((word) => console.log(word));
@@ -111,6 +207,19 @@ name
 ### .toArray()
 converts the trie into an array of words.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(n) : n is the number of nodes in the trie</td>
+  <td>
+   {array}
+  </td>
+ </tr>
+</table>
+
 ```js
 console.log(englishLang.toArray());
 
@@ -120,12 +229,38 @@ console.log(englishLang.toArray());
 ### .getWordsCount()
 gets the count of words in the trie.
 
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number}
+  </td>
+ </tr>
+</table>
+
 ```js
 console.log(englishLang.getWordsCount()); // 7
 ```
 
 ### .getNodesCount()
 gets the count of nodes in the trie.
+
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number}
+  </td>
+ </tr>
+</table>
 
 ```js
 console.log(englishLang.getWordsCount()); // 22
@@ -134,7 +269,17 @@ console.log(englishLang.getWordsCount()); // 22
 ### .clear()
 clears the trie.
 
+<table>
+ <tr>
+  <th>runtime</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+ </tr>
+</table>
+
 ```js
+englishLang.clear();
 console.log(englishLang.getWordsCount()); // 0
 console.log(englishLang.getNodesCount()); // 1
 ```
