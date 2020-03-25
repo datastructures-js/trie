@@ -67,8 +67,8 @@ insert a string word into the trie.
   <td>
    word: {string}
   </td>
-  <td><b><center>TrieNode</center></b>
-   <br />
+  <td style="text-align: center;"><b>TrieNode</b>
+   <br /><br/>
     <b>.getChar()</b>: {string} returns the node's char.<br/>
     <b>.getParent()</b>: {TrieNode} returns the parent node.<br/>
     <b>.isEndOfWord()</b> {boolean} check if a node donates an end of a word.<br/>
