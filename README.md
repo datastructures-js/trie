@@ -111,7 +111,7 @@ checks if a word exists in the trie.
 
 ```js
 englishLang.has('hi'); // true
-englishLang.insert('sky'); // false
+englishLang.has('sky'); // false
 ```
 
 ### .find(word)
