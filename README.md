@@ -67,7 +67,7 @@ insert a string word into the trie.
   <td>
    word: {string}
   </td>
-  <td style="text-align: center;"><b>TrieNode</b>
+  <td align="center"><b>TrieNode</b>
    <br /><br/>
     <b>.getChar()</b>: {string} returns the node's char.<br/>
     <b>.getParent()</b>: {TrieNode} returns the parent node.<br/>
