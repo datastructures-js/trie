@@ -7,18 +7,18 @@ describe('Trie unit tests', () => {
 
   describe('.insert(word)', () => {
     it('insert words into the trie', () => {
-      trie.insert('hi');
-      trie.insert('hi');
-      trie.insert('hi');
-      trie.insert('hi');
-      trie.insert('hit');
-      trie.insert('hide');
-      trie.insert('hello');
-      trie.insert('sand');
-      trie.insert('safe');
-      trie.insert('noun');
-      trie.insert('name');
-      trie.insert('');
+      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hit')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hide')).to.be.instanceof(TrieNode);
+      expect(trie.insert('hello')).to.be.instanceof(TrieNode);
+      expect(trie.insert('sand')).to.be.instanceof(TrieNode);
+      expect(trie.insert('safe')).to.be.instanceof(TrieNode);
+      expect(trie.insert('noun')).to.be.instanceof(TrieNode);
+      expect(trie.insert('name')).to.be.instanceof(TrieNode);
+      expect(trie.insert('')).to.equal(null);
     });
 
     it('throws an exception for none string words', () => {
