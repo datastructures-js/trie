@@ -36,8 +36,6 @@ class Trie {
       throw new Error('Trie.insert expect a string word');
     }
 
-    if (word === '') return null;
-
     if (i === word.length) {
       if (!node.isEndOfWord()) {
         node.setEndOfWord(true);
@@ -104,7 +102,7 @@ class Trie {
 
     if (lastCharNode === null) return false;
 
-    if (lastCharNode.childrenCount() > 0) {
+    if (lastCharNode.childrenCount() > 0 || word === '') {
       lastCharNode.setEndOfWord(false);
       this.wordsCount -= 1;
       return true;
