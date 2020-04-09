@@ -206,7 +206,7 @@ name
 converts the trie into an array of words.
 
 <table>
- <tr><th>return</th><th></th></tr>
+ <tr><th>return</th><th>description</th></tr>
  <tr><td>array</td><td>a list of all the words in the trie</td></tr>
 </table>
 
