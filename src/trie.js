@@ -1,5 +1,5 @@
 /**
- * datastructures-js/trie
+ * @datastructures-js/trie
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
@@ -11,19 +11,20 @@ const TrieNode = require('./trieNode');
  */
 class Trie {
   constructor() {
-    this.root = new TrieNode('');
-    this.wordsCount = 0;
-    this.nodesCount = 1; // root node
+    this._root = new TrieNode('');
+    this._wordsCount = 0;
+    this._nodesCount = 1; // root node
   }
 
   /**
    * @public
    * inserts a word into the trie and returns its last char node
-   *
    * @param {string} word
-   * @return {TrieNode}
+   * @param {TrieNode} node
+   * @param {number} i
+   * @returns {TrieNode}
    */
-  insert(word, node = this.root, i = 0) {
+  insert(word, node = this._root, i = 0) {
     if (typeof word !== 'string') {
       throw new Error('Trie.insert expects a string word');
     }
@@ -31,14 +32,14 @@ class Trie {
     if (i === word.length) {
       if (!node.isEndOfWord()) {
         node.setEndOfWord(true);
-        this.wordsCount += 1;
+        this._wordsCount += 1;
       }
       return node;
     }
 
     if (!node.hasChild(word[i])) {
       node.addChild(word[i]);
-      this.nodesCount += 1;
+      this._nodesCount += 1;
     }
 
     return this.insert(word, node.getChild(word[i]), i + 1);
@@ -47,11 +48,12 @@ class Trie {
   /**
    * @public
    * checks if a word exists in the trie
-   *
    * @param {string} word
-   * @return {boolean}
+   * @param {TrieNode} node
+   * @param {number} i
+   * @returns {boolean}
    */
-  has(word, node = this.root, i = 0) {
+  has(word, node = this._root, i = 0) {
     if (typeof word !== 'string') return false;
 
     if (i === word.length) {
@@ -66,11 +68,12 @@ class Trie {
   /**
    * @public
    * finds a word in the trie and returns its last char node
-   *
    * @param {string} word
-   * @return {TrieNode}
+   * @param {TrieNode} word
+   * @param {string} word
+   * @returns {TrieNode}
    */
-  find(word, node = this.root, i = 0) {
+  find(word, node = this._root, i = 0) {
     if (typeof word !== 'string') return null;
 
     if (i === word.length) {
@@ -85,9 +88,8 @@ class Trie {
   /**
    * @public
    * removes a word from the trie
-   *
    * @param {string} word
-   * @return {boolean}
+   * @returns {boolean}
    */
   remove(word) {
     const lastCharNode = this.find(word);
@@ -96,7 +98,7 @@ class Trie {
 
     if (lastCharNode.childrenCount() > 0 || word === '') {
       lastCharNode.setEndOfWord(false);
-      this.wordsCount -= 1;
+      this._wordsCount -= 1;
       return true;
     }
 
@@ -104,21 +106,23 @@ class Trie {
     while (current.getChar() !== '') {
       if (current.childrenCount() === 0) {
         current.getParent().removeChild(current.getChar());
-        this.nodesCount -= 1;
+        this._nodesCount -= 1;
       }
       current = current.getParent();
     }
 
-    this.wordsCount -= 1;
+    this._wordsCount -= 1;
     return true;
   }
 
   /**
+   * @public
    * traverse the words in the trie
-   *
    * @param {function} cb
+   * @param {TrieNode} node
+   * @param {string} w
    */
-  forEach(cb, node = this.root, w = '') {
+  forEach(cb, node = this._root, w = '') {
     if (typeof cb !== 'function') {
       throw new Error('Trie.forEach expects a callback');
     }
@@ -128,17 +132,17 @@ class Trie {
       cb(word);
     }
 
-    node.getChildren().forEach((childNode) => {
-      word += childNode.getChar();
-      this.forEach(cb, childNode, word); // depth-first search
+    node.children().forEach((child) => {
+      word += child.getChar();
+      this.forEach(cb, child, word); // depth-first search
       word = word.substr(0, word.length - 1); // backward tracking
     });
   }
 
   /**
+   * @public
    * converts the trie into an array of words
-   *
-   * @return {array}
+   * @returns {array}
    */
   toArray() {
     const result = [];
@@ -148,27 +152,28 @@ class Trie {
 
   /**
    * @public
-   * @return {number}
+   * @returns {number}
    */
-  getNodesCount() {
-    return this.nodesCount;
+  nodesCount() {
+    return this._nodesCount;
   }
 
   /**
    * @public
-   * @return {number}
+   * @returns {number}
    */
-  getWordsCount() {
-    return this.wordsCount;
+  wordsCount() {
+    return this._wordsCount;
   }
 
   /**
+   * @public
    * clears the trie
    */
   clear() {
-    this.root = new TrieNode('');
-    this.nodesCount = 1;
-    this.wordsCount = 0;
+    this._root = new TrieNode('');
+    this._nodesCount = 1;
+    this._wordsCount = 0;
   }
 }
 

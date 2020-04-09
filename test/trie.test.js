@@ -32,15 +32,15 @@ describe('Trie unit tests', () => {
     });
   });
 
-  describe('.getNodesCount()', () => {
+  describe('.nodesCount()', () => {
     it('should get the count of characters', () => {
-      expect(trie.getNodesCount()).to.equal(23);
+      expect(trie.nodesCount()).to.equal(23);
     });
   });
 
-  describe('.getWordsCount()', () => {
+  describe('.wordsCount()', () => {
     it('should get the count of words', () => {
-      expect(trie.getWordsCount()).to.equal(9);
+      expect(trie.wordsCount()).to.equal(9);
     });
   });
 
@@ -128,52 +128,52 @@ describe('Trie unit tests', () => {
     it('remove words from the trie', () => {
       trie.remove('hit');
       expect(trie.has('hit')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(22);
-      expect(trie.getWordsCount()).to.equal(8);
+      expect(trie.nodesCount()).to.equal(22);
+      expect(trie.wordsCount()).to.equal(8);
 
       trie.remove('hi');
       expect(trie.has('hi')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(22);
-      expect(trie.getWordsCount()).to.equal(7);
+      expect(trie.nodesCount()).to.equal(22);
+      expect(trie.wordsCount()).to.equal(7);
 
       trie.remove('hide');
       expect(trie.has('hide')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(19);
-      expect(trie.getWordsCount()).to.equal(6);
+      expect(trie.nodesCount()).to.equal(19);
+      expect(trie.wordsCount()).to.equal(6);
 
       trie.remove('hello');
       expect(trie.has('hello')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(14);
-      expect(trie.getWordsCount()).to.equal(5);
+      expect(trie.nodesCount()).to.equal(14);
+      expect(trie.wordsCount()).to.equal(5);
 
       trie.remove('safe');
       expect(trie.has('safe')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(12);
-      expect(trie.getWordsCount()).to.equal(4);
+      expect(trie.nodesCount()).to.equal(12);
+      expect(trie.wordsCount()).to.equal(4);
 
       trie.remove('sand');
       expect(trie.has('sand')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(8);
-      expect(trie.getWordsCount()).to.equal(3);
+      expect(trie.nodesCount()).to.equal(8);
+      expect(trie.wordsCount()).to.equal(3);
 
       trie.remove('noun');
       expect(trie.has('noun')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(5);
-      expect(trie.getWordsCount()).to.equal(2);
+      expect(trie.nodesCount()).to.equal(5);
+      expect(trie.wordsCount()).to.equal(2);
 
       trie.remove('name');
       expect(trie.has('name')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(1);
-      expect(trie.getWordsCount()).to.equal(1);
+      expect(trie.nodesCount()).to.equal(1);
+      expect(trie.wordsCount()).to.equal(1);
 
       trie.remove('');
       expect(trie.has('')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(1);
-      expect(trie.getWordsCount()).to.equal(0);
+      expect(trie.nodesCount()).to.equal(1);
+      expect(trie.wordsCount()).to.equal(0);
 
       expect(trie.remove(123)).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(1);
-      expect(trie.getWordsCount()).to.equal(0);
+      expect(trie.nodesCount()).to.equal(1);
+      expect(trie.wordsCount()).to.equal(0);
     });
   });
 
@@ -182,8 +182,8 @@ describe('Trie unit tests', () => {
       trie.insert('test');
       trie.clear();
       expect(trie.has('test')).to.equal(false);
-      expect(trie.getNodesCount()).to.equal(1);
-      expect(trie.getWordsCount()).to.equal(0);
+      expect(trie.nodesCount()).to.equal(1);
+      expect(trie.wordsCount()).to.equal(0);
     });
   });
 });
