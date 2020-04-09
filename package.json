@@ -1,6 +1,6 @@
 {
   "name": "@datastructures-js/trie",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "trie implementation in javascript",
   "main": "index.js",
   "scripts": {
