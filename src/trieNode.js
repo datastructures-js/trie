@@ -1,5 +1,5 @@
 /**
- * datastructures-js/trie
+ * @datastructures-js/trie
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
@@ -9,10 +9,10 @@
  */
 class TrieNode {
   constructor(char) {
-    this.char = char;
-    this.endOfWord = false;
-    this.parentNode = null;
-    this.children = new Map();
+    this._char = char;
+    this._isEndOfWord = false;
+    this._parent = null;
+    this._children = new Map();
   }
 
   /**
@@ -20,7 +20,7 @@ class TrieNode {
    * @returns {string}
    */
   getChar() {
-    return this.char;
+    return this._char;
   }
 
   /**
@@ -28,7 +28,7 @@ class TrieNode {
    * @param {TrieNode} parentNode
    */
   setParent(parentNode) {
-    this.parentNode = parentNode;
+    this._parent = parentNode;
   }
 
   /**
@@ -36,15 +36,15 @@ class TrieNode {
    * @return {TrieNode}
    */
   getParent() {
-    return this.parentNode;
+    return this._parent;
   }
 
   /**
    * @internal
    * @param {boolean} endOfWord
    */
-  setEndOfWord(endOfWord) {
-    this.endOfWord = endOfWord;
+  setEndOfWord(isEndOfWord) {
+    this._isEndOfWord = isEndOfWord;
   }
 
   /**
@@ -52,7 +52,7 @@ class TrieNode {
    * @return {boolean}
    */
   isEndOfWord() {
-    return this.endOfWord;
+    return this._isEndOfWord;
   }
 
   /**
@@ -62,7 +62,7 @@ class TrieNode {
   addChild(char) {
     const childNode = new TrieNode(char);
     childNode.setParent(this);
-    this.children.set(char, childNode);
+    this._children.set(char, childNode);
   }
 
   /**
@@ -71,7 +71,7 @@ class TrieNode {
    * @return {boolean}
    */
   removeChild(char) {
-    return this.children.delete(char);
+    return this._children.delete(char);
   }
 
   /**
@@ -80,24 +80,24 @@ class TrieNode {
    * @return {TrieNode}
    */
   getChild(char) {
-    return this.children.get(char) || null;
+    return this._children.get(char) || null;
   }
 
   /**
-   * @internal
+   * @public
    * @param {string} char
    * @return {boolean}
    */
   hasChild(char) {
-    return this.children.has(char);
+    return this._children.has(char);
   }
 
   /**
    * @internal
    * @return {Map}
    */
-  getChildren() {
-    return this.children;
+  children() {
+    return this._children;
   }
 
   /**
@@ -105,7 +105,7 @@ class TrieNode {
    * @return {number}
    */
   childrenCount() {
-    return this.children.size;
+    return this._children.size;
   }
 }
 
