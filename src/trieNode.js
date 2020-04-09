@@ -84,7 +84,7 @@ class TrieNode {
   }
 
   /**
-   * @internal
+   * @public
    * @param {string} char
    * @return {boolean}
    */
