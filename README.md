@@ -300,7 +300,7 @@ returns the parent node.
 </table>
 
 #### .isEndOfWord()
-check if a node donates an end of a word.
+check if a node is an end of a word.
 
 <table>
  <tr><th>return</th></tr>
