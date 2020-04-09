@@ -1,5 +1,5 @@
 /**
- * datastructures-js/trie
+ * @datastructures-js/trie
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
