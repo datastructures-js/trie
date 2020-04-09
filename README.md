@@ -69,7 +69,7 @@ insert a string word into the trie.
 
 <table>
  <tr><th>return</th></tr>
- <tr><td>TrieNode</td></tr>
+ <tr><td><a href="#trienode">TrieNode</a></td></tr>
 </table>
 
 <table>
@@ -127,7 +127,7 @@ finds a word in the trie and returns the node of its last character.
 
 <table>
  <tr><th>return</th></tr>
- <tr><td>TrieNode</td></tr>
+ <tr><td><a href="#trienode">TrieNode</a></td></tr>
 </table>
 
 <table>
