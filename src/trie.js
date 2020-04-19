@@ -69,8 +69,8 @@ class Trie {
    * @public
    * finds a word in the trie and returns its last char node
    * @param {string} word
-   * @param {TrieNode} word
-   * @param {string} word
+   * @param {TrieNode} node
+   * @param {number} i
    * @returns {TrieNode}
    */
   find(word, node = this._root, i = 0) {
