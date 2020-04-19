@@ -90,7 +90,7 @@ englishLang.insert('noun');
 englishLang.insert('name');
 ```
 
-*Note: the empty string is not a default word in the trie. You can add the empty word explicitly using .insert('')*
+*Note: the empty string is not a default word in the trie. You can add the empty word explicitly using `.insert('')`*
 
 ### .has(word)
 checks if a word exists in the trie.
