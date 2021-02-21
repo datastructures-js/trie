@@ -42,55 +42,50 @@ npm install --save @datastructures-js/trie
 ### require
 
 ```js
-const Trie = require('@datastructures-js/trie');
+const { Trie } = require('@datastructures-js/trie');
 ```
 
 ### import
 
 ```js
-import Trie from '@datastructures-js/trie';
+import { Trie } from '@datastructures-js/trie';
 ```
 
 ### Construction
 
 ```js
-// example
-const englishLang = new Trie();
+const dictionary = new Trie();
 ```
 
-### .insert(word)
-insert a string word into the trie.
+### .insert(value)
+insert the string form of value (`value.toString()`) into the trie.
+
+*Note: the empty string is not a default word in the trie. You can add the empty word by explicitly calling `.insert('')`*
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">Trie</td>
+    <td align="center">O(k) : k = length of stringified value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td><a href="#trienode">TrieNode</a></td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
-englishLang.insert('hi');
-englishLang.insert('hit');
-englishLang.insert('hide');
-englishLang.insert('hello');
-englishLang.insert('sand');
-englishLang.insert('safe');
-englishLang.insert('noun');
-englishLang.insert('name');
+dictionary
+  .insert('hi')
+  .insert('hit')
+  .insert('hide')
+  .insert('hello')
+  .insert('sand')
+  .insert('safe')
+  .insert('noun')
+  .insert('name');
 ```
-
-*Note: the empty string is not a default word in the trie. You can add the empty word explicitly using `.insert('')`*
 
 ### .has(word)
 checks if a word exists in the trie.
@@ -98,7 +93,7 @@ checks if a word exists in the trie.
 <table>
  <tr><th align="center" colspan="2">params</th></tr>
  <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr><td>value</td><td>any</td></tr>
 </table>
 
 <table>
@@ -111,7 +106,6 @@ checks if a word exists in the trie.
  <tr><td>O(k) : k = length of the word</td></tr>
 </table>
 
-#### Example
 
 ```js
 englishLang.has('hi'); // true
