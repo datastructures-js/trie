@@ -1,3 +1,5 @@
 const Trie = require('./src/trie');
+const TrieNode = require('./src/trieNode');
 
-module.exports = Trie;
+exports.TrieNode = TrieNode
+exports.Trie = Trie;
