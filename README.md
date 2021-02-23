@@ -165,7 +165,7 @@ traverses all words in the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">cb: called with each word in the trie</td>
+    <td align="center">cb: function</td>
     <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
