@@ -42,13 +42,13 @@ npm install --save @datastructures-js/trie
 ### require
 
 ```js
-const { Trie } = require('@datastructures-js/trie');
+const { Trie, TrieNode } = require('@datastructures-js/trie');
 ```
 
 ### import
 
 ```js
-import { Trie } from '@datastructures-js/trie';
+import { Trie, TrieNode } from '@datastructures-js/trie';
 ```
 
 ### Construction
@@ -71,7 +71,7 @@ insert the string form of value (`value.toString()`) into the trie.
   <tr>
     <td align="center">value: any (except null or undefined)</td>
     <td align="center">Trie</td>
-    <td align="center">O(k) : k = length of stringified value</td>
+    <td align="center">O(k) : k = length of string value</td>
   </tr>
 </table>
 
@@ -105,7 +105,6 @@ checks if a word exists in the trie.
  <tr><th>runtime</th></tr>
  <tr><td>O(k) : k = length of the word</td></tr>
 </table>
-
 
 ```js
 englishLang.has('hi'); // true
