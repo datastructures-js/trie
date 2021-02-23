@@ -7,6 +7,7 @@ describe('Trie unit tests', () => {
 
   describe('.insert(word)', () => {
     it('insert words into the trie', () => {
+      expect(trie.insert()).to.be.instanceof(Trie); // does not insert undefined
       expect(trie.insert('hi')).to.be.instanceof(Trie);
       expect(trie.insert('hi')).to.be.instanceof(Trie);
       expect(trie.insert('hi')).to.be.instanceof(Trie);
@@ -21,14 +22,6 @@ describe('Trie unit tests', () => {
 
       // empty string can be inserted explicitly as a word, root is its node
       expect(trie.insert('')).to.be.instanceof(Trie);
-    });
-
-    it('throws an error when value is missing', () => {
-      expect(() => trie.insert()).to.throw(Error)
-        .and.to.have.property(
-          'message',
-          'Trie.insert expects a value'
-        );
     });
   });
 
@@ -58,6 +51,8 @@ describe('Trie unit tests', () => {
     });
 
     it('returns false for none existing words', () => {
+      expect(trie.has()).to.equal(false);
+      expect(trie.has(null)).to.equal(false);
       expect(trie.has('his')).to.equal(false);
       expect(trie.has('helo')).to.equal(false);
       expect(trie.has('hitt')).to.equal(false);
@@ -65,14 +60,6 @@ describe('Trie unit tests', () => {
       expect(trie.has('h')).to.equal(false);
       expect(trie.has('san')).to.equal(false);
       expect(trie.has(123)).to.equal(false);
-    });
-
-    it('throws an error when value is missing', () => {
-      expect(() => trie.has()).to.throw(Error)
-        .and.to.have.property(
-          'message',
-          'Trie.has expects a value'
-        );
     });
   });
 
@@ -84,17 +71,11 @@ describe('Trie unit tests', () => {
     });
 
     it('returns null for non existing words', () => {
+      expect(trie.find()).to.equal(null);
+      expect(trie.find(null)).to.equal(null);
       expect(trie.find('hex')).to.equal(null);
       expect(trie.find('h')).to.equal(null);
       expect(trie.find(123)).to.equal(null);
-    });
-
-    it('throws an error when value is missing', () => {
-      expect(() => trie.find()).to.throw(Error)
-        .and.to.have.property(
-          'message',
-          'Trie.find expects a value'
-        );
     });
   });
 
@@ -194,14 +175,8 @@ describe('Trie unit tests', () => {
 
     it('returns null when removing none existing word', () => {
       expect(trie.remove('something')).to.equal(null);
-    });
-
-    it('throws an error when value is missing', () => {
-      expect(() => trie.remove()).to.throw(Error)
-        .and.to.have.property(
-          'message',
-          'Trie.remove expects a value'
-        );
+      expect(trie.remove()).to.equal(null);
+      expect(trie.remove(null)).to.equal(null);
     });
   });
 

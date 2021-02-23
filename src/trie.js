@@ -24,7 +24,7 @@ class Trie {
    */
   insert(value) {
     if (value === undefined || value === null) {
-      throw new Error('Trie.insert expects a value');
+      return this;
     }
 
     const word = value.toString();
@@ -53,7 +53,7 @@ class Trie {
    */
   has(value) {
     if (value === undefined || value === null) {
-      throw new Error('Trie.has expects a value');
+      return false;
     }
 
     const word = value.toString();
@@ -80,7 +80,7 @@ class Trie {
    */
   find(value) {
     if (value === undefined || value === null) {
-      throw new Error('Trie.find expects a value');
+      return null;
     }
 
     const word = value.toString();
@@ -108,7 +108,7 @@ class Trie {
    */
   remove(value) {
     if (value === undefined || value === null) {
-      throw new Error('Trie.remove expects a value');
+      return null;
     }
 
     const word = value.toString();
