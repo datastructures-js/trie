@@ -27,6 +27,7 @@ Trie implementation in javascript. Each Trie node holds one character of a word.
   * [.wordsCount()](#wordsCount)
   * [.nodesCount()](#nodesCount)
   * [.clear()](#clear)
+  * [Trie.fromArray(list)](#triefromarraylist)
   * [TrieNode](#trienode)
  * [Build](#build)
  * [License](#license)
@@ -69,7 +70,7 @@ insert the string form of value (`value.toString()`) into the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">value: any</td>
     <td align="center">Trie</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -97,7 +98,7 @@ checks if a word exists in the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">value: any</td>
     <td align="center">boolean</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -118,7 +119,7 @@ finds a word in the trie and returns the node of its last character.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">value: any</td>
     <td align="center">TrieNode</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -145,7 +146,7 @@ removes a word from the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">value: any</td>
     <td align="center">string: the removed word</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -193,7 +194,7 @@ converts the trie into an array of words.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">array: list of words in the trie</td>
+    <td align="center">array&lt;string&gt;</td>
     <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
@@ -257,6 +258,22 @@ englishLang.clear();
 console.log(englishLang.wordsCount()); // 0
 console.log(englishLang.nodesCount()); // 1
 ```
+
+### Trie.fromArray(list)
+converts an existing array of values into a trie.
+
+<table>
+ <tr>
+  <th>params</th>
+  <th>return</th>
+  <th>runtime</th>
+ </tr>
+ <tr>
+  <td>list: array&lt;any&gt;</td>
+  <td>boolean</td>
+  <td>O(n * k)</td>
+ </tr>
+</table>
 
 ### TrieNode
 
