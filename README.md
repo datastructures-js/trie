@@ -14,9 +14,9 @@ Trie implementation in javascript. Each Trie node holds one character of a word.
 
 # Table of Contents
 * [Install](#install)
+* [require](#require)
+* [import](#import)
 * [API](#api)
-  * [require](#require)
-  * [import](#import)
   * [Construction](#construction)
   * [.insert(word)](#insertword)
   * [.has(word)](#hasword)
@@ -37,19 +37,19 @@ Trie implementation in javascript. Each Trie node holds one character of a word.
 npm install --save @datastructures-js/trie
 ```
 
-## API
-
-### require
+## require
 
 ```js
 const { Trie, TrieNode } = require('@datastructures-js/trie');
 ```
 
-### import
+## import
 
 ```js
 import { Trie, TrieNode } from '@datastructures-js/trie';
 ```
+
+## API
 
 ### Construction
 
