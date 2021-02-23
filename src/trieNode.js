@@ -1,10 +1,8 @@
 /**
- * @datastructures-js/trie
+ * datastructures-js/trie
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
- */
-
-/**
+ *
  * @class TrieNode
  */
 class TrieNode {
@@ -13,6 +11,10 @@ class TrieNode {
     this._isEndOfWord = false;
     this._parent = null;
     this._children = new Map();
+  }
+
+  isRoot() {
+    return this._char === '';
   }
 
   /**
@@ -41,7 +43,7 @@ class TrieNode {
 
   /**
    * @internal
-   * @param {boolean} endOfWord
+   * @param {boolean} isEndOfWord
    */
   setEndOfWord(isEndOfWord) {
     this._isEndOfWord = isEndOfWord;

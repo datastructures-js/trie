@@ -14,19 +14,20 @@ Trie implementation in javascript. Each Trie node holds one character of a word.
 
 # Table of Contents
 * [Install](#install)
+* [require](#require)
+* [import](#import)
 * [API](#api)
-  * [require](#require)
-  * [import](#import)
   * [Construction](#construction)
-  * [.insert(word)](#insertword)
-  * [.has(word)](#hasword)
-  * [.find(word)](#findword)
-  * [.remove(word)](#removeword)
+  * [.insert(value)](#insertvalue)
+  * [.has(value)](#hasvalue)
+  * [.find(value)](#findvalue)
+  * [.remove(value)](#removevalue)
   * [.forEach(cb)](#foreachcb)
   * [.toArray()](#toarray)
   * [.wordsCount()](#wordsCount)
   * [.nodesCount()](#nodesCount)
   * [.clear()](#clear)
+  * [Trie.fromArray(list)](#triefromarraylist)
   * [TrieNode](#trienode)
  * [Build](#build)
  * [License](#license)
@@ -37,107 +38,92 @@ Trie implementation in javascript. Each Trie node holds one character of a word.
 npm install --save @datastructures-js/trie
 ```
 
+## require
+
+```js
+const { Trie, TrieNode } = require('@datastructures-js/trie');
+```
+
+## import
+
+```js
+import { Trie, TrieNode } from '@datastructures-js/trie';
+```
+
 ## API
-
-### require
-
-```js
-const Trie = require('@datastructures-js/trie');
-```
-
-### import
-
-```js
-import Trie from '@datastructures-js/trie';
-```
 
 ### Construction
 
 ```js
-// example
-const englishLang = new Trie();
+const dictionary = new Trie();
 ```
 
-### .insert(word)
-insert a string word into the trie.
+### .insert(value)
+insert the string form of value (`value.toString()`) into the trie.
+
+*Note: the empty string is not a default word in the trie. empty word can be added by explicitly calling `.insert('')`*
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any</td>
+    <td align="center">Trie</td>
+    <td align="center">O(k): k = length of string value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td><a href="#trienode">TrieNode</a></td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
-englishLang.insert('hi');
-englishLang.insert('hit');
-englishLang.insert('hide');
-englishLang.insert('hello');
-englishLang.insert('sand');
-englishLang.insert('safe');
-englishLang.insert('noun');
-englishLang.insert('name');
+dictionary
+  .insert('hi')
+  .insert('hit')
+  .insert('hide')
+  .insert('hello')
+  .insert('sand')
+  .insert('safe')
+  .insert('noun')
+  .insert('name');
 ```
 
-*Note: the empty string is not a default word in the trie. You can add the empty word explicitly using `.insert('')`*
-
-### .has(word)
+### .has(value)
 checks if a word exists in the trie.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any</td>
+    <td align="center">boolean</td>
+    <td align="center">O(k): k = length of string value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td>boolean</td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
 englishLang.has('hi'); // true
 englishLang.has('sky'); // false
 ```
 
-### .find(word)
+### .find(value)
 finds a word in the trie and returns the node of its last character.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any</td>
+    <td align="center">TrieNode</td>
+    <td align="center">O(k): k = length of string value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td><a href="#trienode">TrieNode</a></td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
 const hi = englishLang.find('hi');
@@ -150,44 +136,39 @@ const safe = englishLang.find('safe');
 // safe.getParent().getParent().getChar() = 'a'
 ```
 
-### .remove(word)
+### .remove(value)
 removes a word from the trie.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any</td>
+    <td align="center">string: the removed word</td>
+    <td align="center">O(k): k = length of string value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td>boolean</td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
-englishLang.remove('hi'); // true - hi removed
-englishLang.remove('sky'); // false - nothing is removed
+englishLang.remove('hi'); // hi
+englishLang.remove('sky'); // sky
 ```
 
 ### .forEach(cb)
 traverses all words in the trie.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
-  <tr><td>cb</td><td>function</td><td>called with each word in the trie</td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(n) : n = number of nodes in the trie</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">cb: function</td>
+    <td align="center">O(n): n = number of nodes in the trie</td>
+  </tr>
 </table>
 
 ```js
@@ -208,16 +189,15 @@ name
 converts the trie into an array of words.
 
 <table>
- <tr><th>return</th><th>description</th></tr>
- <tr><td>array</td><td>a list of all the words in the trie</td></tr>
+  <tr>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">array&lt;string&gt;</td>
+    <td align="center">O(n): n = number of nodes in the trie</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(n) : n = number of nodes in the trie</td></tr>
-</table>
-
-#### Example
 
 ```js
 console.log(englishLang.toArray());
@@ -229,16 +209,15 @@ console.log(englishLang.toArray());
 gets the count of words in the trie.
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>number</td></tr>
+  <tr>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">number</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(1)</td></tr>
-</table>
-
-#### Example
 
 ```js
 console.log(englishLang.wordsCount()); // 7
@@ -248,16 +227,15 @@ console.log(englishLang.wordsCount()); // 7
 gets the count of nodes in the trie.
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>number</td></tr>
+  <tr>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">number</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(1)</td></tr>
-</table>
-
-#### Example
 
 ```js
 console.log(englishLang.nodesCount()); // 23
@@ -275,18 +253,39 @@ clears the trie.
  </tr>
 </table>
 
-#### Example
-
 ```js
 englishLang.clear();
 console.log(englishLang.wordsCount()); // 0
 console.log(englishLang.nodesCount()); // 1
 ```
 
+### Trie.fromArray(list)
+converts an existing array of values into a trie.
+
+<table>
+ <tr>
+  <th>params</th>
+  <th>return</th>
+  <th>runtime</th>
+ </tr>
+ <tr>
+  <td>list: array&lt;any&gt;</td>
+  <td>boolean</td>
+  <td>O(n * k)</td>
+ </tr>
+</table>
+
+```js
+const numbersTrie = Trie.fromArray([1, 32, 123, 21, 222, 132, 111, 312]);
+
+console.log(numbersTrie.wordsCount()); // 8
+console.log(numbersTrie.has('132')); // true
+console.log(numbersTrie.has(123)); // true
+```
+
 ### TrieNode
 
 #### .getChar()
-returns the node's char.
 
 <table>
  <tr><th>return</th></tr>
@@ -294,7 +293,6 @@ returns the node's char.
 </table>
 
 #### .getParent()
-returns the parent node.
 
 <table>
  <tr><th>return</th></tr>
@@ -302,7 +300,6 @@ returns the parent node.
 </table>
 
 #### .isEndOfWord()
-check if a node is an end of a word.
 
 <table>
  <tr><th>return</th></tr>
@@ -310,7 +307,6 @@ check if a node is an end of a word.
 </table>
 
 #### .getChild(char)
-returns the child node of a char.
 
 <table>
  <tr><th>return</th></tr>
@@ -318,7 +314,6 @@ returns the child node of a char.
 </table>
 
 #### .hasChild(char)
-check the node has a child char.
 
 <table>
  <tr><th>return</th></tr>
@@ -326,7 +321,6 @@ check the node has a child char.
 </table>
 
 #### .childrenCount()
-returns the number of children nodes.
 
 <table>
  <tr><th>return</th></tr>

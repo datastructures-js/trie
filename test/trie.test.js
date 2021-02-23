@@ -7,28 +7,21 @@ describe('Trie unit tests', () => {
 
   describe('.insert(word)', () => {
     it('insert words into the trie', () => {
-      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hi')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hit')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hide')).to.be.instanceof(TrieNode);
-      expect(trie.insert('hello')).to.be.instanceof(TrieNode);
-      expect(trie.insert('sand')).to.be.instanceof(TrieNode);
-      expect(trie.insert('safe')).to.be.instanceof(TrieNode);
-      expect(trie.insert('noun')).to.be.instanceof(TrieNode);
-      expect(trie.insert('name')).to.be.instanceof(TrieNode);
+      expect(trie.insert()).to.be.instanceof(Trie); // does not insert undefined
+      expect(trie.insert('hi')).to.be.instanceof(Trie);
+      expect(trie.insert('hi')).to.be.instanceof(Trie);
+      expect(trie.insert('hi')).to.be.instanceof(Trie);
+      expect(trie.insert('hi')).to.be.instanceof(Trie);
+      expect(trie.insert('hit')).to.be.instanceof(Trie);
+      expect(trie.insert('hide')).to.be.instanceof(Trie);
+      expect(trie.insert('hello')).to.be.instanceof(Trie);
+      expect(trie.insert('sand')).to.be.instanceof(Trie);
+      expect(trie.insert('safe')).to.be.instanceof(Trie);
+      expect(trie.insert('noun')).to.be.instanceof(Trie);
+      expect(trie.insert('name')).to.be.instanceof(Trie);
 
       // empty string can be inserted explicitly as a word, root is its node
-      expect(trie.insert('')).to.be.instanceof(TrieNode);
-    });
-
-    it('throws an exception for none string words', () => {
-      expect(() => trie.insert()).to.throw(Error)
-        .and.to.have.property(
-          'message',
-          'Trie.insert expects a string word'
-        );
+      expect(trie.insert('')).to.be.instanceof(Trie);
     });
   });
 
@@ -58,6 +51,8 @@ describe('Trie unit tests', () => {
     });
 
     it('returns false for none existing words', () => {
+      expect(trie.has()).to.equal(false);
+      expect(trie.has(null)).to.equal(false);
       expect(trie.has('his')).to.equal(false);
       expect(trie.has('helo')).to.equal(false);
       expect(trie.has('hitt')).to.equal(false);
@@ -76,6 +71,8 @@ describe('Trie unit tests', () => {
     });
 
     it('returns null for non existing words', () => {
+      expect(trie.find()).to.equal(null);
+      expect(trie.find(null)).to.equal(null);
       expect(trie.find('hex')).to.equal(null);
       expect(trie.find('h')).to.equal(null);
       expect(trie.find(123)).to.equal(null);
@@ -99,11 +96,11 @@ describe('Trie unit tests', () => {
       ]);
     });
 
-    it('throws an exception for none string words', () => {
+    it('throws an error if callback is not a function', () => {
       expect(() => trie.forEach()).to.throw(Error)
         .and.to.have.property(
           'message',
-          'Trie.forEach expects a callback'
+          'Trie.forEach expects a callback function'
         );
     });
   });
@@ -171,9 +168,15 @@ describe('Trie unit tests', () => {
       expect(trie.nodesCount()).to.equal(1);
       expect(trie.wordsCount()).to.equal(0);
 
-      expect(trie.remove(123)).to.equal(false);
+      expect(trie.remove(123)).to.equal(null);
       expect(trie.nodesCount()).to.equal(1);
       expect(trie.wordsCount()).to.equal(0);
+    });
+
+    it('returns null when removing none existing word', () => {
+      expect(trie.remove('something')).to.equal(null);
+      expect(trie.remove()).to.equal(null);
+      expect(trie.remove(null)).to.equal(null);
     });
   });
 
@@ -184,6 +187,20 @@ describe('Trie unit tests', () => {
       expect(trie.has('test')).to.equal(false);
       expect(trie.nodesCount()).to.equal(1);
       expect(trie.wordsCount()).to.equal(0);
+    });
+  });
+
+  describe('.fromArray(values)', () => {
+    it('convert an existing list of values into a trie', () => {
+      const numbers = [1, 32, 123, 21, 222, 132, 111, 312];
+      const numbersTrie = Trie.fromArray(numbers);
+      expect(numbersTrie.wordsCount()).to.equal(8);
+      expect(numbersTrie.nodesCount()).to.equal(16);
+      expect(numbersTrie.has(123)).to.equal(true);
+      expect(numbersTrie.has('123')).to.equal(true);
+      expect(numbersTrie.has(222)).to.equal(true);
+      expect(numbersTrie.has('222')).to.equal(true);
+      expect(numbersTrie.has('20')).to.equal(false);
     });
   });
 });
