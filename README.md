@@ -275,6 +275,14 @@ converts an existing array of values into a trie.
  </tr>
 </table>
 
+```js
+const numbersTrie = Trie.fromArray([1, 32, 123, 21, 222, 132, 111, 312]);
+
+console.log(numbersTrie.wordsCount()); // 8
+console.log(numbersTrie.has('132')); // true
+console.log(numbersTrie.has(123)); // true
+```
+
 ### TrieNode
 
 #### .getChar()
