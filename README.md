@@ -261,7 +261,6 @@ console.log(englishLang.nodesCount()); // 1
 ### TrieNode
 
 #### .getChar()
-returns the node's char.
 
 <table>
  <tr><th>return</th></tr>
@@ -269,7 +268,6 @@ returns the node's char.
 </table>
 
 #### .getParent()
-returns the parent node.
 
 <table>
  <tr><th>return</th></tr>
@@ -277,7 +275,6 @@ returns the parent node.
 </table>
 
 #### .isEndOfWord()
-check if a node is an end of a word.
 
 <table>
  <tr><th>return</th></tr>
@@ -285,7 +282,6 @@ check if a node is an end of a word.
 </table>
 
 #### .getChild(char)
-returns the child node of a char.
 
 <table>
  <tr><th>return</th></tr>
@@ -293,7 +289,6 @@ returns the child node of a char.
 </table>
 
 #### .hasChild(char)
-check the node has a child char.
 
 <table>
  <tr><th>return</th></tr>
@@ -301,7 +296,6 @@ check the node has a child char.
 </table>
 
 #### .childrenCount()
-returns the number of children nodes.
 
 <table>
  <tr><th>return</th></tr>
