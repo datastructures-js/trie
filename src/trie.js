@@ -110,6 +110,7 @@ class Trie {
     if (value === undefined || value === null) {
       throw new Error('Trie.remove expects a value');
     }
+
     const word = value.toString();
     let currentNode = this._root;
 
