@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `.insert` can be chained.
+- `.remove` now returns the removed word. 
 - better handling for null & undefined.
 
 ### Added
