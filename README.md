@@ -91,19 +91,16 @@ dictionary
 checks if a word exists in the trie.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>value</td><td>any</td></tr>
-</table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td>boolean</td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">boolean</td>
+    <td align="center">O(k) : k = length of string value</td>
+  </tr>
 </table>
 
 ```js
