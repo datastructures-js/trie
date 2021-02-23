@@ -61,7 +61,7 @@ const dictionary = new Trie();
 ### .insert(value)
 insert the string form of value (`value.toString()`) into the trie.
 
-*Note: the empty string is not a default word in the trie. You can add the empty word by explicitly calling `.insert('')`*
+*Note: the empty string is not a default word in the trie. empty word can be added by explicitly calling `.insert('')`*
 
 <table>
   <tr>
