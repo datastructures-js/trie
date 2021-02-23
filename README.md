@@ -166,7 +166,7 @@ traverses all words in the trie.
   </tr>
   <tr>
     <td align="center">cb: called with each word in the trie</td>
-    <td align="center">O(n): number of nodes in the trie</td>
+    <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
 
@@ -194,7 +194,7 @@ converts the trie into an array of words.
   </tr>
   <tr>
     <td align="center">array: list of words in the trie</td>
-    <td align="center">O(n): number of nodes in the trie</td>
+    <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
 
