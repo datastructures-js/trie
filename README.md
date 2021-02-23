@@ -112,22 +112,17 @@ englishLang.has('sky'); // false
 finds a word in the trie and returns the node of its last character.
 
 <table>
- <tr><th align="center" colspan="2">params</th></tr>
- <tr><td><b>name</b></td><td><b>type</b></td></tr>
-  <tr><td>word</td><td>string</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">value: any (except null or undefined)</td>
+    <td align="center">TrieNode</td>
+    <td align="center">O(k) : k = length of string value</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr><td><a href="#trienode">TrieNode</a></td></tr>
-</table>
-
-<table>
- <tr><th>runtime</th></tr>
- <tr><td>O(k) : k = length of the word</td></tr>
-</table>
-
-#### Example
 
 ```js
 const hi = englishLang.find('hi');
