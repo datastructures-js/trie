@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2021-02-23
+
+### Changed
+- `.insert` can be chained.
+- better handling for null & undefined.
+
+### Added
+- `.fromArray` static function to convert a list into a trie.
+
+### Fixed
+- jsdoc
+- README
+
 ## [3.0.1] - 2020-04-18
 ### Fixed
 - jsdoc
