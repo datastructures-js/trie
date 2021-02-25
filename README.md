@@ -313,11 +313,11 @@ console.log(numbersTrie.has(123)); // true
  <tr><td>TrieNode</td></tr>
 </table>
 
-#### .setParent()
+#### .setParent(trieNode)
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>TrieNode</td></tr>
+  <tr><th>params</th></tr>
+  <tr><td>trieNode: TrieNode</td></tr>
 </table>
 
 #### .isEndOfWord()
@@ -337,15 +337,15 @@ console.log(numbersTrie.has(123)); // true
 #### .getChild(char)
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>TrieNode</td></tr>
+ <tr><th>params</th><th>return</th></tr>
+ <tr><td>char: string</td><td>TrieNode</td></tr>
 </table>
 
 #### .hasChild(char)
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>boolean</td></tr>
+ <tr><th>params</th><th>return</th></tr>
+ <tr><td>char: string</td><td>boolean</td></tr>
 </table>
 
 #### .childrenCount()
