@@ -327,6 +327,13 @@ console.log(numbersTrie.has(123)); // true
  <tr><td>boolean</td></tr>
 </table>
 
+#### .setEndOfWord(isEndOfWord)
+
+<table>
+  <tr><th>params</th></tr>
+  <tr><td>isEndOfWord: boolean</td></tr>
+</table>
+
 #### .getChild(char)
 
 <table>
