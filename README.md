@@ -105,8 +105,8 @@ checks if a word exists in the trie.
 </table>
 
 ```js
-englishLang.has('hi'); // true
-englishLang.has('sky'); // false
+dictionary.has('hi'); // true
+dictionary.has('sky'); // false
 ```
 
 ### .find(value)
@@ -126,11 +126,11 @@ finds a word in the trie and returns the node of its last character.
 </table>
 
 ```js
-const hi = englishLang.find('hi');
+const hi = dictionary.find('hi');
 // hi.getChar() = 'i'
 // hi.getParent().getChar() = 'h'
 
-const safe = englishLang.find('safe');
+const safe = dictionary.find('safe');
 // safe.getChar() = 'e'
 // safe.getParent().getChar() = 'f'
 // safe.getParent().getParent().getChar() = 'a'
@@ -153,8 +153,8 @@ removes a word from the trie.
 </table>
 
 ```js
-englishLang.remove('hi'); // hi
-englishLang.remove('sky'); // sky
+dictionary.remove('hi'); // hi
+dictionary.remove('sky'); // sky
 ```
 
 ### .forEach(cb)
@@ -172,7 +172,7 @@ traverses all words in the trie.
 </table>
 
 ```js
-englishLang.forEach((word) => console.log(word));
+dictionary.forEach((word) => console.log(word));
 
 /*
 hit
@@ -200,7 +200,7 @@ converts the trie into an array of words.
 </table>
 
 ```js
-console.log(englishLang.toArray());
+console.log(dictionary.toArray());
 
 // ['hit', 'hide', 'hello', 'sand', 'safe', 'noun', 'name']
 ```
@@ -220,7 +220,7 @@ gets the count of words in the trie.
 </table>
 
 ```js
-console.log(englishLang.wordsCount()); // 7
+console.log(dictionary.wordsCount()); // 7
 ```
 
 ### .nodesCount()
@@ -238,7 +238,7 @@ gets the count of nodes in the trie.
 </table>
 
 ```js
-console.log(englishLang.nodesCount()); // 23
+console.log(dictionary.nodesCount()); // 23
 ```
 
 ### .clear()
@@ -254,9 +254,9 @@ clears the trie.
 </table>
 
 ```js
-englishLang.clear();
-console.log(englishLang.wordsCount()); // 0
-console.log(englishLang.nodesCount()); // 1
+dictionary.clear();
+console.log(dictionary.wordsCount()); // 0
+console.log(dictionary.nodesCount()); // 1
 ```
 
 ### Trie.fromArray(list)
@@ -285,6 +285,20 @@ console.log(numbersTrie.has(123)); // true
 
 ### TrieNode
 
+#### new TrieNode(char)
+
+<table>
+  <tr><th>params</th></tr>
+  <tr><td>char: string</td></tr>
+</table>
+
+#### .isRoot()
+
+<table>
+ <tr><th>return</th></tr>
+ <tr><td>boolean</td></tr>
+</table>
+
 #### .getChar()
 
 <table>
@@ -299,6 +313,13 @@ console.log(numbersTrie.has(123)); // true
  <tr><td>TrieNode</td></tr>
 </table>
 
+#### .setParent(trieNode)
+
+<table>
+  <tr><th>params</th></tr>
+  <tr><td>trieNode: TrieNode</td></tr>
+</table>
+
 #### .isEndOfWord()
 
 <table>
@@ -306,18 +327,25 @@ console.log(numbersTrie.has(123)); // true
  <tr><td>boolean</td></tr>
 </table>
 
+#### .setEndOfWord(isEndOfWord)
+
+<table>
+  <tr><th>params</th></tr>
+  <tr><td>isEndOfWord: boolean</td></tr>
+</table>
+
 #### .getChild(char)
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>TrieNode</td></tr>
+ <tr><th>params</th><th>return</th></tr>
+ <tr><td>char: string</td><td>TrieNode</td></tr>
 </table>
 
 #### .hasChild(char)
 
 <table>
- <tr><th>return</th></tr>
- <tr><td>boolean</td></tr>
+ <tr><th>params</th><th>return</th></tr>
+ <tr><td>char: string</td><td>boolean</td></tr>
 </table>
 
 #### .childrenCount()
