@@ -134,6 +134,8 @@ const safe = dictionary.find('safe');
 // safe.getChar() = 'e'
 // safe.getParent().getChar() = 'f'
 // safe.getParent().getParent().getChar() = 'a'
+
+const nothing = dictionary.find('nothing'); // null
 ```
 
 ### .remove(value)
@@ -154,7 +156,9 @@ removes a word from the trie.
 
 ```js
 dictionary.remove('hi'); // hi
-dictionary.remove('sky'); // sky
+
+// none existing word
+dictionary.remove('sky'); // null
 ```
 
 ### .forEach(cb)
