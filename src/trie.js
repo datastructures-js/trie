@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-const TrieNode = require('./trieNode');
+const { TrieNode } = require('./trieNode');
 
 /**
  * @class Trie
@@ -212,4 +212,4 @@ class Trie {
   }
 }
 
-module.exports = Trie;
+exports.Trie = Trie;

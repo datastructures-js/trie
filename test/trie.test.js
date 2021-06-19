@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const TrieNode = require('../src/trieNode');
-const Trie = require('../src/trie');
+const { TrieNode } = require('../src/trieNode');
+const { Trie } = require('../src/trie');
 
 describe('Trie unit tests', () => {
   const trie = new Trie();
