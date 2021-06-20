@@ -323,7 +323,9 @@ console.log(numbersTrie.has(123)); // true
 
 <table>
   <tr><th>params</th></tr>
+  <tr><th>return</th></tr>
   <tr><td>parent: TrieNode</td></tr>
+  <tr><td>TrieNode</td></tr>
 </table>
 
 #### .isEndOfWord()
@@ -337,7 +339,9 @@ console.log(numbersTrie.has(123)); // true
 
 <table>
   <tr><th>params</th></tr>
+  <tr><th>return</th></tr>
   <tr><td>isEndOfWord: boolean</td></tr>
+  <tr><td>TrieNode</td></tr>
 </table>
 
 #### .getChild(char)
