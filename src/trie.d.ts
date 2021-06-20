@@ -10,5 +10,5 @@ export class Trie {
   nodesCount(): number;
   wordsCount(): number;
   clear(): void;
-  static fromArray(string []): Trie; 
+  static fromArray(words: string[]): Trie; 
 }
