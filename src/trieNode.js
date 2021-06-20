@@ -31,6 +31,7 @@ class TrieNode {
    */
   setParent(parentNode) {
     this._parent = parentNode;
+    return this;
   }
 
   /**
@@ -47,6 +48,7 @@ class TrieNode {
    */
   setEndOfWord(isEndOfWord) {
     this._isEndOfWord = isEndOfWord;
+    return this;
   }
 
   /**
@@ -65,6 +67,7 @@ class TrieNode {
     const childNode = new TrieNode(char);
     childNode.setParent(this);
     this._children.set(char, childNode);
+    return this;
   }
 
   /**
@@ -111,4 +114,4 @@ class TrieNode {
   }
 }
 
-module.exports = TrieNode;
+exports.TrieNode = TrieNode;

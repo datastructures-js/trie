@@ -6,18 +6,20 @@
 
 Trie implementation in javascript. Each Trie node holds one character of a word.
 
+<img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
+
 <table>
 <tr><th>Trie</th></tr>
 <tr><td><img width="500" alt="Trie" src="https://user-images.githubusercontent.com/6517308/42425010-dc9f20ca-82db-11e8-8f78-1efe6959df5f.png">
 </td></tr>
 </table>
 
-# Table of Contents
+# Contents
 * [Install](#install)
 * [require](#require)
 * [import](#import)
 * [API](#api)
-  * [Construction](#construction)
+  * [constructor](#constructor)
   * [.insert(value)](#insertvalue)
   * [.has(value)](#hasvalue)
   * [.find(value)](#findvalue)
@@ -52,7 +54,7 @@ import { Trie, TrieNode } from '@datastructures-js/trie';
 
 ## API
 
-### Construction
+### constructor
 
 ```js
 const dictionary = new Trie();
@@ -70,7 +72,7 @@ insert the string form of value (`value.toString()`) into the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any</td>
+    <td align="center">value: { toString: () => string }</td>
     <td align="center">Trie</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -98,7 +100,7 @@ checks if a word exists in the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any</td>
+    <td align="center">value: { toString: () => string }</td>
     <td align="center">boolean</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -119,7 +121,7 @@ finds a word in the trie and returns the node of its last character.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any</td>
+    <td align="center">value: { toString: () => string }</td>
     <td align="center">TrieNode</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -148,7 +150,7 @@ removes a word from the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">value: any</td>
+    <td align="center">value: { toString: () => string }</td>
     <td align="center">string: the removed word</td>
     <td align="center">O(k): k = length of string value</td>
   </tr>
@@ -170,7 +172,7 @@ traverses all words in the trie.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">cb: function</td>
+    <td align="center">cb: (word: string) => void</td>
     <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
@@ -198,7 +200,7 @@ converts the trie into an array of words.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">array&lt;string&gt;</td>
+    <td align="center">string[]</td>
     <td align="center">O(n): n = number of nodes in the trie</td>
   </tr>
 </table>
@@ -273,7 +275,7 @@ converts an existing array of values into a trie.
   <th>runtime</th>
  </tr>
  <tr>
-  <td>list: array&lt;any&gt;</td>
+  <td>list: string[]</td>
   <td>boolean</td>
   <td>O(n * k)</td>
  </tr>
@@ -317,11 +319,11 @@ console.log(numbersTrie.has(123)); // true
  <tr><td>TrieNode</td></tr>
 </table>
 
-#### .setParent(trieNode)
+#### .setParent(parent)
 
 <table>
-  <tr><th>params</th></tr>
-  <tr><td>trieNode: TrieNode</td></tr>
+  <tr><th>params</th><th>return</th></tr>
+  <tr><td>parent: TrieNode</td><td>TrieNode</td></tr>
 </table>
 
 #### .isEndOfWord()
@@ -334,8 +336,9 @@ console.log(numbersTrie.has(123)); // true
 #### .setEndOfWord(isEndOfWord)
 
 <table>
-  <tr><th>params</th></tr>
-  <tr><td>isEndOfWord: boolean</td></tr>
+  <tr><th>params</th><th>return</th></tr>
+  <tr><td>isEndOfWord: boolean</td>
+  <td>TrieNode</td></tr>
 </table>
 
 #### .getChild(char)
