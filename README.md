@@ -6,6 +6,8 @@
 
 Trie implementation in javascript. Each Trie node holds one character of a word.
 
+<img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
+
 <table>
 <tr><th>Trie</th></tr>
 <tr><td><img width="500" alt="Trie" src="https://user-images.githubusercontent.com/6517308/42425010-dc9f20ca-82db-11e8-8f78-1efe6959df5f.png">
