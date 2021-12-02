@@ -136,7 +136,7 @@ class Trie {
       this._nodesCount -= 1;
       currentNode = currentNode.getParent();
     } while (
-      currentNode.childrenCount() === 0
+      currentNode.isLeaf()
       && !currentNode.isEndOfWord()
       && !currentNode.isRoot()
     );
