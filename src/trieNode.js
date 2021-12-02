@@ -13,8 +13,20 @@ class TrieNode {
     this._children = new Map();
   }
 
+  /**
+   * @public
+   * @return {boolean}
+   */
   isRoot() {
     return this._char === '';
+  }
+
+  /**
+   * @public
+   * @return {boolean}
+   */
+  isLeaf() {
+    return this._children.size === 0;
   }
 
   /**
