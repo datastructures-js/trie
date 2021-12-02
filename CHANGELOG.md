@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [4.2.0] - 2021-12-01
+
+### Added
+- `isLeaf()` to TrieNode: leaf is a node that has no children.
+
+### Fixed
+- `remove(word)` two edge cases that were not covered:
+  1. the case when removing a word that does not exist, count should not change.
+  2. the case when another word overlaps with the word being deleted, it was removing all the word chars regardless if one is an end of another word.
+  *Credit* 王悠悠 https://github.com/anson09
+
 ## [4.1.1] - 2021-06-20
 
 ### Fixed
