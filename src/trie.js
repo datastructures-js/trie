@@ -121,19 +121,25 @@ class Trie {
       currentNode = currentNode.getChild(word[i]);
     }
 
+    if (!currentNode.isEndOfWord()) {
+      return null;
+    }
+
     if (currentNode.childrenCount() > 0 || word === '') {
       currentNode.setEndOfWord(false);
       this._wordsCount -= 1;
       return word;
     }
 
-    while (!currentNode.isRoot()) {
-      if (currentNode.childrenCount() === 0) {
-        currentNode.getParent().removeChild(currentNode.getChar());
-        this._nodesCount -= 1;
-      }
+    do {
+      currentNode.getParent().removeChild(currentNode.getChar());
+      this._nodesCount -= 1;
       currentNode = currentNode.getParent();
-    }
+    } while (
+      currentNode.isLeaf()
+      && !currentNode.isEndOfWord()
+      && !currentNode.isRoot()
+    );
 
     this._wordsCount -= 1;
     return word;
