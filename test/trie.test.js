@@ -128,13 +128,13 @@ describe('Trie unit tests', () => {
       expect(trie.nodesCount()).to.equal(22);
       expect(trie.wordsCount()).to.equal(8);
 
-      trie.remove('hi');
-      expect(trie.has('hi')).to.equal(false);
-      expect(trie.nodesCount()).to.equal(22);
-      expect(trie.wordsCount()).to.equal(7);
-
       trie.remove('hide');
       expect(trie.has('hide')).to.equal(false);
+      expect(trie.nodesCount()).to.equal(20);
+      expect(trie.wordsCount()).to.equal(7);
+
+      trie.remove('hi');
+      expect(trie.has('hi')).to.equal(false);
       expect(trie.nodesCount()).to.equal(19);
       expect(trie.wordsCount()).to.equal(6);
 
@@ -174,6 +174,10 @@ describe('Trie unit tests', () => {
     });
 
     it('returns null when removing none existing word', () => {
+      trie.insert('name');
+      expect(trie.remove('na')).to.equal(null);
+      expect(trie.nodesCount()).to.equal(5);
+      expect(trie.wordsCount()).to.equal(1);
       expect(trie.remove('something')).to.equal(null);
       expect(trie.remove()).to.equal(null);
       expect(trie.remove(null)).to.equal(null);
