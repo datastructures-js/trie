@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   1. the case when removing a word that does not exist, count should not change.
   2. the case when another word overlaps with the word being deleted, it was removing all the word chars regardless if one is an end of another word.
 
-  **Credit** 王悠悠 https://github.com/anson09
+  **Credit:** 王悠悠 https://github.com/anson09
 
 ## [4.1.1] - 2021-06-20
 
