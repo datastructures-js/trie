@@ -170,6 +170,9 @@ console.log(numbersTrie.has(123)); // true
 #### isRoot()
 checks if node is root.
 
+#### isLeaf()
+checks if has no children.
+
 #### getChar()
 gets the node's char.
 
