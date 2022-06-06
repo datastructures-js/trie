@@ -167,23 +167,32 @@ console.log(numbersTrie.has(123)); // true
 
 ### TrieNode
 
-#### isRoot
+#### isRoot()
+checks if node is root.
 
-#### getChar
+#### getChar()
+gets the node's char.
 
-#### getParent
+#### getParent()
+gets the node's parent node.
 
-#### setParent
+#### setParent(node: TrieNode)
+sets the node's parent node.
 
-#### isEndOfWord
+#### isEndOfWord()
+checks if node's char is last in a word.
 
-#### setEndOfWord
+#### setEndOfWord(endOfWord: boolean)
+sets if node's char is last in a word.
 
-#### getChild
+#### getChild(char: string)
+gets the node's child from a char.
 
-#### hasChild
+#### hasChild(char: string)
+checks if the node has a child from a char.
 
-#### childrenCount
+#### childrenCount()
+gets the node's children count.
 
 ## Build
 ```
