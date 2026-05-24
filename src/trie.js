@@ -4,14 +4,14 @@
  * @license MIT
  */
 
-const { TrieNode } = require("./trieNode");
+const { TrieNode } = require('./trieNode');
 
 /**
  * @class Trie
  */
 class Trie {
   constructor() {
-    this._root = new TrieNode("");
+    this._root = new TrieNode('');
     this._wordsCount = 0;
     this._nodesCount = 1; // root node
   }
@@ -125,7 +125,7 @@ class Trie {
       return null;
     }
 
-    if (currentNode.childrenCount() > 0 || word === "") {
+    if (currentNode.childrenCount() > 0 || word === '') {
       currentNode.setEndOfWord(false);
       this._wordsCount -= 1;
       return word;
@@ -174,11 +174,11 @@ class Trie {
    * @param {function} cb
    */
   forEach(cb) {
-    if (typeof cb !== "function") {
-      throw new Error("Trie.forEach expects a callback function");
+    if (typeof cb !== 'function') {
+      throw new Error('Trie.forEach expects a callback function');
     }
 
-    const forEachRecursive = (node = this._root, word = "") => {
+    const forEachRecursive = (node = this._root, word = '') => {
       if (node.isEndOfWord()) {
         cb(word);
       }
@@ -223,7 +223,7 @@ class Trie {
    * @public
    */
   clear() {
-    this._root = new TrieNode("");
+    this._root = new TrieNode('');
     this._nodesCount = 1;
     this._wordsCount = 0;
   }
