@@ -136,9 +136,9 @@ class Trie {
       this._nodesCount -= 1;
       currentNode = currentNode.getParent();
     } while (
-      currentNode.isLeaf() &&
-      !currentNode.isEndOfWord() &&
-      !currentNode.isRoot()
+      currentNode.isLeaf()
+      && !currentNode.isEndOfWord()
+      && !currentNode.isRoot()
     );
 
     this._wordsCount -= 1;
@@ -158,7 +158,7 @@ class Trie {
 
     let currentNode = this._root;
 
-    for (let i = 0; i < prefix.length; i++) {
+    for (let i = 0; i < prefix.length; i += 1) {
       if (!currentNode.hasChild(prefix[i])) return false;
 
       currentNode = currentNode.getChild(prefix[i]);

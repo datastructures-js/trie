@@ -6,7 +6,7 @@ describe('Trie unit tests', () => {
   const trie = new Trie();
 
   describe('.insert(word)', () => {
-    it("insert words into the trie", () => {
+    it('insert words into the trie', () => {
       expect(trie.insert()).to.be.instanceof(Trie); // does not insert undefined
       expect(trie.insert('hi')).to.be.instanceof(Trie);
       expect(trie.insert('hi')).to.be.instanceof(Trie);
@@ -118,7 +118,7 @@ describe('Trie unit tests', () => {
           'sand',
           'safe',
           'noun',
-          'name',
+          'name'
         ]);
     });
 
@@ -145,7 +145,7 @@ describe('Trie unit tests', () => {
           'sand',
           'safe',
           'noun',
-          'name',
+          'name'
         ]);
     });
   });
