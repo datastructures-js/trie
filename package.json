@@ -24,11 +24,11 @@
   "homepage": "https://github.com/datastructures-js/trie#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
+    "eslint": "^10.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
     "grunt": "^1.4.1",
-    "grunt-eslint": "^22.0.0",
+    "grunt-eslint": "^26.0.0",
     "grunt-mocha-istanbul": "^5.0.2",
     "grunt-mocha-test": "^0.13.3",
     "istanbul": "^0.4.5",
