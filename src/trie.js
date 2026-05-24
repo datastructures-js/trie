@@ -4,14 +4,14 @@
  * @license MIT
  */
 
-const { TrieNode } = require('./trieNode');
+const { TrieNode } = require("./trieNode");
 
 /**
  * @class Trie
  */
 class Trie {
   constructor() {
-    this._root = new TrieNode('');
+    this._root = new TrieNode("");
     this._wordsCount = 0;
     this._nodesCount = 1; // root node
   }
@@ -125,7 +125,7 @@ class Trie {
       return null;
     }
 
-    if (currentNode.childrenCount() > 0 || word === '') {
+    if (currentNode.childrenCount() > 0 || word === "") {
       currentNode.setEndOfWord(false);
       this._wordsCount -= 1;
       return word;
@@ -136,13 +136,36 @@ class Trie {
       this._nodesCount -= 1;
       currentNode = currentNode.getParent();
     } while (
-      currentNode.isLeaf()
-      && !currentNode.isEndOfWord()
-      && !currentNode.isRoot()
+      currentNode.isLeaf() &&
+      !currentNode.isEndOfWord() &&
+      !currentNode.isRoot()
     );
 
     this._wordsCount -= 1;
     return word;
+  }
+
+  /**
+   * Checks if a prefix exists in the trie
+   * @public
+   * @param {any} value
+   * @returns {boolean}
+   */
+  hasPrefix(value) {
+    if (value === undefined || value === null) return false;
+
+    const prefix = value.toString();
+
+    let currentNode = this._root;
+
+    for (let i = 0; i < prefix.length; i++) {
+      if (!currentNode.hasChild(prefix[i])) return false;
+
+      currentNode = currentNode.getChild(prefix[i]);
+    }
+
+    // If we successfully traversed the prefix, it exists
+    return true;
   }
 
   /**
@@ -151,11 +174,11 @@ class Trie {
    * @param {function} cb
    */
   forEach(cb) {
-    if (typeof cb !== 'function') {
-      throw new Error('Trie.forEach expects a callback function');
+    if (typeof cb !== "function") {
+      throw new Error("Trie.forEach expects a callback function");
     }
 
-    const forEachRecursive = (node = this._root, word = '') => {
+    const forEachRecursive = (node = this._root, word = "") => {
       if (node.isEndOfWord()) {
         cb(word);
       }
@@ -200,7 +223,7 @@ class Trie {
    * @public
    */
   clear() {
-    this._root = new TrieNode('');
+    this._root = new TrieNode("");
     this._nodesCount = 1;
     this._wordsCount = 0;
   }
